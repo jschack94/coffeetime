@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import ScrollToTop from './Handler/ScrollToTop';
-import * as serviceWorker from './serviceWorker';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import App from './Views/App';
 import Chemex from './Views/Recipes/Chemex';
@@ -27,4 +26,3 @@ const routing = (
 );
 
 ReactDOM.render(routing, document.getElementById('root'));
-serviceWorker.unregister();
