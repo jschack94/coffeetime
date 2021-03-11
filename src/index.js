@@ -1,17 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import ScrollToTop from './Handler/ScrollToTop';
+import * as serviceWorker from './serviceWorker';
+import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import App from './Views/App';
+import Chemex from './Views/Recipes/Chemex';
+import French from './Views/Recipes/French';
+import Aeropress from './Views/Recipes/Aeropress';
+import Espresso from './Views/Recipes/Espresso';
+import Pourover from './Views/Recipes/Pourover';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+const routing = (
+    <BrowserRouter>
+        <ScrollToTop>
+            <Switch>
+                <Route exact path='/' component={App} />
+                <Route path='/chemex' component={Chemex} />
+                <Route path='/french' component={French} />
+                <Route path='/aeropress' component={Aeropress} />
+                <Route path='/espresso' component={Espresso} />
+                <Route path='/pourover' component={Pourover} />
+            </Switch>
+        </ScrollToTop>
+    </BrowserRouter>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+ReactDOM.render(routing, document.getElementById('root'));
+serviceWorker.unregister();
